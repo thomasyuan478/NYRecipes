@@ -1,5 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .recipes import add_recipes, undo_recipes
+from .reviews import add_reviews, undo_reviews
 
 from app.models.db import db, environment, SCHEMA
 

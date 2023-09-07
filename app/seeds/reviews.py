@@ -34,7 +34,7 @@ def add_reviews():
     star_rating=5,
     comment="Badabing badaboom I am a review. Nice Recipe"
   )
-  twoTwo = Review(
+  twoThree = Review(
     user_id=2,
     recipe_id=3,
     star_rating=4,
@@ -58,6 +58,16 @@ def add_reviews():
     star_rating=5,
     comment="SUPER DELICIOUS, CAN'T WAIT TO TRY MORE"
   )
+  db.session.add(oneOne)
+  db.session.add(oneTwo)
+  db.session.add(oneThree)
+  db.session.add(twoOne)
+  db.session.add(twoTwo)
+  db.session.add(twoThree)
+  db.session.add(threeOne)
+  db.session.add(threeTwo)
+  db.session.add(threeThree)
+  db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

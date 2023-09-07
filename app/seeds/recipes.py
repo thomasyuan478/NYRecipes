@@ -48,6 +48,10 @@ Plain whole-milk yogurt or sour cream, for serving (optional)""",
     instruction="Step 1 -> Step 7, Enjoy food"
   )
 
+  db.session.add(one)
+  db.session.add(two)
+  db.session.add(three)
+
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
 # have a built in function to do this. With postgres in production TRUNCATE
