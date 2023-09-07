@@ -22,13 +22,13 @@ class Recipe(db.Model):
     secondary="favorites",
     back_populates="favorites")
 
-def to_dict(self):
-  return{
-  'id': self.id,
-  'owner_id': self.owner_id,
-  'name': self.name,
-  'ingredient_list': self.ingredient_list,
-  'description': self.description,
-  'cover_image': self.cover_image,
-  'instruction': self.instruction
-  }
+  def to_dict(self):
+    return{
+    'id': self.id,
+    'owner_id': self.owner_id,
+    'name': self.name,
+    'ingredient_list': self.ingredient_list,
+    'description': self.description,
+    'cover_image': self.cover_image,
+    'instruction': self.instruction
+    }
