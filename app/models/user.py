@@ -11,8 +11,23 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    profilePic = db.Column(db.String(255))
+    biography = db.Column(db.Text())
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    #Relationships
+    recipes = db.relationship("Recipe", back_populates="user", cascade="all, delete-orphan")
+    reviews = db.relationship("Review", back_populates="user")
+    favorites = db.relationship(
+        "Recipe",
+        secondary="favorites",
+        back_populates="user_favorites"
+    )
+
+
 
     @property
     def password(self):
@@ -29,5 +44,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
             'email': self.email
         }
