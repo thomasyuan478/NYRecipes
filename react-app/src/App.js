@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import { getRecipesThunk } from "./store/recipe";
 import { Recipes } from "./components/Recipes";
+import { NewRecipeForm } from "./components/NewRecipeForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
             <Recipes />
           </Route>
           <Route exact path="/new">
-            <h1>HELLO THERE</h1>
+            <NewRecipeForm />
           </Route>
           <Route path="/login">
             <LoginFormPage />

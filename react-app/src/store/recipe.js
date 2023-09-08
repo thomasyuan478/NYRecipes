@@ -1,6 +1,7 @@
 //TYPES
 const CREATE_RECIPE = "POST /api/recipes/new";
 const GET_RECIPES = "GET /api/recipes";
+const DELETE_RECIPE = "DELETE /api/recipes";
 
 //ACTION CREATORS
 
@@ -18,8 +19,16 @@ export function loadRecipes(recipes) {
   };
 }
 
+export function deleteRecipe(recipeId) {
+  return {
+    type: DELETE_RECIPE,
+    recipeId,
+  };
+}
+
 //THUNKS
 export const postRecipeThunk = (recipe) => async (dispatch) => {
+  console.log("FROM THUNK", recipe);
   const response = await fetch("/api/recipes/new", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -29,8 +38,11 @@ export const postRecipeThunk = (recipe) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(createRecipe(data.recipe));
-    return null;
-  } else return { error: "an error has occured" };
+    return data;
+  } else {
+    const data = await response.json();
+    return data;
+  }
 };
 
 export const getRecipesThunk = () => async (dispatch) => {
@@ -40,6 +52,13 @@ export const getRecipesThunk = () => async (dispatch) => {
     const recipes = await response.json();
     dispatch(loadRecipes(recipes));
   }
+};
+
+export const deleteRecipeThunk = (recipeId) => async (dispatch) => {
+  const response = await fetch(`/api/recipes/${recipeId}`, {
+    method: "DELETE",
+  });
+  dispatch(deleteRecipe(recipeId));
 };
 
 //Reducer
@@ -58,6 +77,11 @@ const recipesReducer = (state = initialState, action) => {
       const recipesArray = action.recipes.recipes;
       let newState = { ...state };
       recipesArray.forEach((recipe) => (newState.recipes[recipe.id] = recipe));
+      return newState;
+    }
+    case DELETE_RECIPE: {
+      let newState = { ...state };
+      delete newState.recipes[action.recipeId];
       return newState;
     }
     default:

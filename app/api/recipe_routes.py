@@ -7,15 +7,18 @@ from app import db
 recipe_routes = Blueprint('recipes', __name__)
 
 @recipe_routes.route("")
-def get_post():
+def get_recipe():
   recipes = Recipe.query.all()
   return {"recipes": [recipe.to_dict() for recipe in recipes]}
 
 @recipe_routes.route("/new", methods=["POST"])
-def new_post():
+def new_recipe():
   form = RecipeForm()
 
+
   form['csrf_token'].data = request.cookies['csrf_token']
+
+  print(form.data)
 
   if form.validate_on_submit():
     recipe = Recipe(
@@ -30,3 +33,10 @@ def new_post():
     db.session.commit()
     return {'recipe': recipe.to_dict()}
   return {"errors": form.errors}, 400
+
+@recipe_routes.route("/<int:id>", methods=["DELETE"])
+def delete_recipe(id):
+  recipe = Recipe.query.get(id)
+  db.session.delete(recipe)
+  db.session.commit()
+  return {"message": "post deleted"}
