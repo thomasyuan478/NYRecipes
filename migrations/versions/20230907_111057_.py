@@ -47,6 +47,7 @@ def upgrade():
     sa.Column('instruction', sa.Text(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
+    )
 
 
     if environment == "production":
