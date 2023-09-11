@@ -1,7 +1,6 @@
 """empty message
 
 Revision ID: d84a6e44d8aa
-Revises:
 Create Date: 2023-09-07 11:10:57.009944
 
 """
@@ -48,7 +47,7 @@ def upgrade():
     sa.Column('instruction', sa.Text(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
-    )
+
 
     if environment == "production":
         op.execute(f"ALTER TABLE recipes SET SCHEMA {SCHEMA};")
@@ -87,4 +86,5 @@ def downgrade():
     op.drop_table('favorites')
     op.drop_table('recipes')
     op.drop_table('users')
+
     # ### end Alembic commands ###
