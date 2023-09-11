@@ -8,6 +8,8 @@ import Navigation from "./components/Navigation";
 import { getRecipesThunk } from "./store/recipe";
 import { Recipes } from "./components/Recipes";
 import { NewRecipeForm } from "./components/NewRecipeForm";
+import { RecipeDetail } from "./components/RecipeDetail";
+import { EditRecipeForm } from "./components/EditRecipe";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +38,12 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/recipes/:recipeId/edit">
+            <EditRecipeForm />
+          </Route>
+          <Route exact path="/recipes/:recipeId">
+            <RecipeDetail />
           </Route>
         </Switch>
       )}

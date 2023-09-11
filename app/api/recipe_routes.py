@@ -11,10 +11,42 @@ def get_recipe():
   recipes = Recipe.query.all()
   return {"recipes": [recipe.to_dict() for recipe in recipes]}
 
+@recipe_routes.route("/<int:id>")
+def get_recipe_detail(id):
+  recipe = Recipe.query.get(id)
+
+  if not recipe:
+    return {"error": "cannot find recipe"}
+
+  return {'recipe': recipe.to_dict()}
+
+@recipe_routes.route("/<int:id>", methods=['PUT'])
+def update_recipe(id):
+  form = RecipeForm()
+  recipe = Recipe.query.get(id)
+
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  print(form.data)
+
+  if form.validate_on_submit():
+    print("INSIDE FORM VALIDATION BLOCK")
+    print(recipe.name)
+    recipe.name = form.data["name"]
+    print(recipe.name)
+    recipe.description = form.data["description"]
+    recipe.instruction = form.data["instruction"]
+    recipe.cover_image = form.data["cover_image"]
+    recipe.ingredient_list = form.data["ingredient_list"]
+    db.session.commit()
+    return {"recipe": recipe.to_dict()}
+  return {"errors": form.errors}, 400
+
+
+
 @recipe_routes.route("/new", methods=["POST"])
 def new_recipe():
   form = RecipeForm()
-
 
   form['csrf_token'].data = request.cookies['csrf_token']
 
