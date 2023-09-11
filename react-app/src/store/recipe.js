@@ -85,6 +85,7 @@ export const getSingleRecipeThunk = (recipeId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(loadSingleRecipe(data.recipe));
+    return data;
   }
 };
 

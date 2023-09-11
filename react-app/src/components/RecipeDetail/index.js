@@ -19,9 +19,25 @@ export const RecipeDetail = () => {
     dispatch(getSingleRecipeThunk(recipeId));
   }, [dispatch]);
 
+  const recipe = useSelector((state) => state.recipes.singleRecipe);
+
   return (
     <>
       <h1>Hello from details Recipe:{recipeId}</h1>
+      <div>
+        <img src={recipe.cover_image}></img>
+        <div>{recipe.name}</div>
+        <div>{recipe.ingredient_list}</div>
+        <div>{recipe.description}</div>
+        <div>{recipe.instruction}</div>
+      </div>
+      <div>
+        <p></p>
+      </div>
+      <div>
+        <div>Reviews Container</div>
+        <button>Add Review</button>
+      </div>
     </>
   );
 };
