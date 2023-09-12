@@ -16,6 +16,7 @@ export const RecipeCard = ({ recipe }) => {
     history.push(`/recipes/${recipe.id}/edit`);
   };
 
+
   const redirect = (e) => {
     console.log("Detail");
     history.push(`/recipes/${recipe.id}`);

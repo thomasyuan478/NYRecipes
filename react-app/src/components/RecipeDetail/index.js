@@ -19,6 +19,7 @@ export const RecipeDetail = () => {
     dispatch(getSingleRecipeThunk(recipeId));
   }, [dispatch]);
 
+
   const recipe = useSelector((state) => state.recipes.singleRecipe);
 
   return (
@@ -38,6 +39,7 @@ export const RecipeDetail = () => {
         <div>Reviews Container</div>
         <button>Add Review</button>
       </div>
+
     </>
   );
 };
