@@ -13,16 +13,24 @@ export const EditRecipeForm = () => {
 
   const state = useSelector((state) => state.recipes.singleRecipe);
 
-  const [coverImage, setCoverImage] = useState(state.cover_image);
-  const [description, setDescription] = useState(state.description);
-  const [ingredientList, setIngredientList] = useState(state.ingredient_list);
-  const [instruction, setInstruction] = useState(state.instruction);
-  const [name, setName] = useState(state.name);
+  const [coverImage, setCoverImage] = useState(state?.cover_image);
+  const [description, setDescription] = useState(state?.description);
+  const [ingredientList, setIngredientList] = useState(state?.ingredient_list);
+  const [instruction, setInstruction] = useState(state?.instruction);
+  const [name, setName] = useState(state?.name);
   const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
-    dispatch(getSingleRecipeThunk(recipeId));
+    dispatch(getSingleRecipeThunk(recipeId)).then((res) => updateForm(res));
   }, [dispatch]);
+
+  const updateForm = (data) => {
+    setCoverImage(data.recipe.cover_image);
+    setDescription(data.recipe.description);
+    setIngredientList(data.recipe.ingredient_list);
+    setInstruction(data.recipe.instruction);
+    setName(data.recipe.name);
+  };
 
   const submitRecipe = (e) => {
     e.preventDefault();
@@ -37,7 +45,8 @@ export const EditRecipeForm = () => {
     };
 
     dispatch(updateRecipeThunk(recipe, recipeId));
-    console.log(recipe);
+
+    history.push("/");
   };
 
   return (

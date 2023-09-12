@@ -16,10 +16,16 @@ export const RecipeCard = ({ recipe }) => {
     history.push(`/recipes/${recipe.id}/edit`);
   };
 
+
+  const redirect = (e) => {
+    console.log("Detail");
+    history.push(`/recipes/${recipe.id}`);
+  };
+
   return (
     <>
       <div>
-        <img src={recipe.cover_image}></img>
+        <img onClick={redirect} src={recipe.cover_image}></img>
         <div>{recipe.name}</div>
         <div>{recipe.ingredient_list}</div>
         <div>{recipe.description}</div>
