@@ -60,6 +60,7 @@ export const RecipeDetail = () => {
         )}
         <p></p>
       </div>
+
       <ReviewContainer reviews={recipe.reviews} recipeId={recipe.id} />
     </>
   );
