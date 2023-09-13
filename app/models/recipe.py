@@ -32,3 +32,15 @@ class Recipe(db.Model):
     'cover_image': self.cover_image,
     'instruction': self.instruction
     }
+
+  def to_dict_detailed(self):
+    return{
+    'id': self.id,
+    'owner_id': self.owner_id,
+    'name': self.name,
+    'ingredient_list': self.ingredient_list,
+    'description': self.description,
+    'cover_image': self.cover_image,
+    'instruction': self.instruction,
+    'reviews': [review.to_dict() for review in self.reviews]
+    }

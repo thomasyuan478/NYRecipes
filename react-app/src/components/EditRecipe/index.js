@@ -45,7 +45,7 @@ export const EditRecipeForm = () => {
     };
 
     dispatch(updateRecipeThunk(recipe, recipeId));
-    history.push("/");
+    history.push(`/recipes/${recipeId}`);
   };
 
   return (

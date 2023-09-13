@@ -18,7 +18,7 @@ def get_recipe_detail(id):
   if not recipe:
     return {"error": "cannot find recipe"}
 
-  return {'recipe': recipe.to_dict()}
+  return {'recipe': recipe.to_dict_detailed()}
 
 @recipe_routes.route("/<int:id>", methods=['PUT'])
 def update_recipe(id):
