@@ -12,6 +12,7 @@ export const ReviewComponent = ({ review }) => {
 
   const user = useSelector((state) => state.session.user);
 
+
   const deleteButton = (e) => {
     console.log(review.id);
     dispatch(deleteReviewThunk(review.id));
@@ -19,6 +20,7 @@ export const ReviewComponent = ({ review }) => {
 
   const toggleUpdate = () => {
     setUpdate(true);
+
     if (update === true) {
       setUpdate(false);
       setNewComment(review.comment);
@@ -49,6 +51,7 @@ export const ReviewComponent = ({ review }) => {
     if (!sessionUser) return false;
     else if (sessionUser.id != user_id) return false;
     else return true;
+
   };
 
   return (
@@ -78,6 +81,7 @@ export const ReviewComponent = ({ review }) => {
               </div>
             </form>
           )}
+
           {!update && review.comment} RATING - {review.star_rating}
         </div>
         <div>
