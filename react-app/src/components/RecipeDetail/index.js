@@ -17,6 +17,7 @@ export const RecipeDetail = () => {
   // const group = useSelector((state) => state.groups.singleGroup);
   // const event = useSelector((state) => state.events.SingleEvent);
   // const images = useSelector((state) => state.events.SingleEvent.EventImages);
+  const user = useSelector((state) => state.session.user);
 
   const DeleteRecipe = (e) => {
     console.log("delete button");
@@ -34,6 +35,12 @@ export const RecipeDetail = () => {
 
   const recipe = useSelector((state) => state.recipes.singleRecipe);
 
+  const userCheck = (sessionUser, recipeUserId) => {
+    if (!sessionUser) return false;
+    else if (sessionUser.id != recipeUserId) return false;
+    else return true;
+  };
+
   return (
     <>
       <h1>Hello from details Recipe:{recipeId}</h1>
@@ -45,8 +52,12 @@ export const RecipeDetail = () => {
         <div>{recipe.instruction}</div>
       </div>
       <div>
-        <button onClick={UpdateRecipe}>Update</button>
-        <button onClick={DeleteRecipe}>Delete</button>
+        {userCheck(user, recipe.owner_id) && (
+          <button onClick={UpdateRecipe}>Update</button>
+        )}
+        {userCheck(user, recipe.owner_id) && (
+          <button onClick={DeleteRecipe}>Delete</button>
+        )}
         <p></p>
       </div>
 

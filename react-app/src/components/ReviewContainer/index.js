@@ -1,13 +1,15 @@
 import { ReviewComponent } from "../ReviewComponent";
 import { useState } from "react";
 import "./ReviewContainer.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addReviewThunk } from "../../store/recipe";
 
 export const ReviewContainer = ({ reviews, recipeId }) => {
   const dispatch = useDispatch();
   const [reviewText, setReviewText] = useState("");
   const [reviewRating, setReviewRating] = useState(0);
+  const user = useSelector((state) => state.session.user);
+
 
   if (reviews?.length == 0) return null;
 
@@ -54,7 +56,8 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
                 ></input>
               </div>
             </div>
-            <button>Add Review</button>
+            <button disabled={!user}>Add Review</button>
+            {!user && <p>You must be signed in to write a review</p>}
           </form>
         </div>
         <div>
