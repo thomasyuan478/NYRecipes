@@ -4,10 +4,13 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getSingleRecipeThunk } from "../../store/recipe";
+import { ReviewContainer } from "../ReviewContainer";
+import { deleteRecipeThunk } from "../../store/recipe";
 
 export const RecipeDetail = () => {
   const { recipeId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   // const history = useHistory();
   // const state = useSelector((state) => state.events);
   // const user = useSelector((state) => state.session.user);
@@ -15,10 +18,19 @@ export const RecipeDetail = () => {
   // const event = useSelector((state) => state.events.SingleEvent);
   // const images = useSelector((state) => state.events.SingleEvent.EventImages);
 
+  const DeleteRecipe = (e) => {
+    console.log("delete button");
+    dispatch(deleteRecipeThunk(recipe.id));
+  };
+
+  const UpdateRecipe = (e) => {
+    console.log("edit button");
+    history.push(`/recipes/${recipe.id}/edit`);
+  };
+
   useEffect(() => {
     dispatch(getSingleRecipeThunk(recipeId));
   }, [dispatch]);
-
 
   const recipe = useSelector((state) => state.recipes.singleRecipe);
 
@@ -33,13 +45,11 @@ export const RecipeDetail = () => {
         <div>{recipe.instruction}</div>
       </div>
       <div>
+        <button onClick={UpdateRecipe}>Update</button>
+        <button onClick={DeleteRecipe}>Delete</button>
         <p></p>
       </div>
-      <div>
-        <div>Reviews Container</div>
-        <button>Add Review</button>
-      </div>
-
+      <ReviewContainer reviews={recipe.reviews} />
     </>
   );
 };

@@ -45,6 +45,9 @@ function App() {
           <Route exact path="/recipes/:recipeId">
             <RecipeDetail />
           </Route>
+          <Route>
+            <h1>404: Page Not Found</h1>
+          </Route>
         </Switch>
       )}
     </>
