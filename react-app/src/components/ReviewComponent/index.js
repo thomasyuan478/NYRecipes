@@ -20,6 +20,7 @@ export const ReviewComponent = ({ review }) => {
 
   const toggleUpdate = () => {
     setUpdate(true);
+
     if (update === true) {
       setUpdate(false);
       setNewComment(review.comment);
