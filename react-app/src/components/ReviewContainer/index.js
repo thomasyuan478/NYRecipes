@@ -34,7 +34,7 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
     <>
       <h1>Hello From Reviews Component Recipe: {recipeId}</h1>
       <div className="reviews-container">
-        <div>
+        <div className="review-creator">
           <form onSubmit={handleSubmit}>
             <label>Review</label>
             <div>
@@ -43,9 +43,11 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
                 value={reviewText}
                 onChange={(e) => setReviewText(e.target.value)}
                 required
+                cols={"30"}
+                rows={"5"}
               ></textarea>
               <div>
-                <label>Rating</label>
+                <label>Rating </label>
                 <input
                   type="number"
                   min="1"
@@ -55,7 +57,9 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
                 ></input>
               </div>
             </div>
-            <button disabled={!user}>Add Review</button>
+            <button className="ar-b" disabled={!user}>
+              Add Review
+            </button>
             {!user && <p>You must be signed in to write a review</p>}
           </form>
         </div>
