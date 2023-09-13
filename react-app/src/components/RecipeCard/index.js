@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteRecipeThunk } from "../../store/recipe";
 import { useHistory } from "react-router-dom";
 
@@ -16,10 +16,17 @@ export const RecipeCard = ({ recipe }) => {
     history.push(`/recipes/${recipe.id}/edit`);
   };
 
-
   const redirect = (e) => {
     console.log("Detail");
     history.push(`/recipes/${recipe.id}`);
+  };
+
+  const user = useSelector((state) => state.session.user);
+
+  const userCheck = (sessionUser, recipeOwnerId) => {
+    if (!sessionUser) return false;
+    else if (sessionUser.id != recipeOwnerId) return false;
+    else return true;
   };
 
   return (
@@ -30,8 +37,12 @@ export const RecipeCard = ({ recipe }) => {
         <div>{recipe.ingredient_list}</div>
         <div>{recipe.description}</div>
         <div>{recipe.instruction}</div>
-        <button onClick={UpdateRecipe}>Update</button>
-        <button onClick={DeleteRecipe}>Delete</button>
+        {userCheck(user, recipe.owner_id) && (
+          <button onClick={UpdateRecipe}>Update</button>
+        )}
+        {userCheck(user, recipe.owner_id) && (
+          <button onClick={DeleteRecipe}>Delete</button>
+        )}
       </div>
     </>
   );

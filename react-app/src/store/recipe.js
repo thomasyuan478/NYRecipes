@@ -130,6 +130,19 @@ export const addReviewThunk = (review) => async (dispatch) => {
   }
 };
 
+export const updateReviewThunk = (review) => async (dispatch) => {
+  const response = await fetch(`/api/reviews/${review.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(review),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(loadSingleRecipe(data.recipe));
+    return data;
+  }
+};
+
 //Reducer
 const initialState = {
   recipes: {},
