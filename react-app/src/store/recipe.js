@@ -105,6 +105,31 @@ export const deleteRecipeThunk = (recipeId) => async (dispatch) => {
   dispatch(deleteRecipe(recipeId));
 };
 
+export const deleteReviewThunk = (reviewId) => async (dispatch) => {
+  // console.log("FROM DELETE REVIEW THUNK");
+  const response = await fetch(`/api/reviews/${reviewId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(loadSingleRecipe(data.recipe));
+    return data;
+  }
+};
+
+export const addReviewThunk = (review) => async (dispatch) => {
+  const response = await fetch(`/api/recipes/${review.recipe_id}/new`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(review),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(loadSingleRecipe(data.recipe));
+    return data;
+  }
+};
+
 //Reducer
 const initialState = {
   recipes: {},
