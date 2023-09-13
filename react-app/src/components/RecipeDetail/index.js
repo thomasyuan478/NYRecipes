@@ -49,7 +49,7 @@ export const RecipeDetail = () => {
         <button onClick={DeleteRecipe}>Delete</button>
         <p></p>
       </div>
-      <ReviewContainer reviews={recipe.reviews} />
+      <ReviewContainer reviews={recipe.reviews} recipeId={recipe.id} />
     </>
   );
 };

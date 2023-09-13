@@ -1,26 +1,68 @@
-export const ReviewContainer = ({ reviews }) => {
-  console.log(reviews, "FROM REVIEWS COMPONENT");
+import { ReviewComponent } from "../ReviewComponent";
+import { useState } from "react";
+import "./ReviewContainer.css";
+import { useDispatch } from "react-redux";
+import { addReviewThunk } from "../../store/recipe";
+
+export const ReviewContainer = ({ reviews, recipeId }) => {
+  const dispatch = useDispatch();
+  const [reviewText, setReviewText] = useState("");
+  const [reviewRating, setReviewRating] = useState(0);
+
   if (reviews?.length == 0) return null;
+
+  const clearForm = () => {
+    setReviewText("");
+    setReviewRating(0);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const review = {
+      comment: reviewText,
+      star_rating: reviewRating,
+      recipe_id: recipeId,
+      user_id: 1,
+    };
+    // console.log(review);
+    dispatch(addReviewThunk(review));
+    clearForm();
+  };
+
   return (
     <>
-      <h1>Hello From Reviews Component</h1>
-      <div>
-        <div>Reviews Container</div>
-        {reviews?.map((reviewObj) => (
-          <>
+      <h1>Hello From Reviews Component Recipe: {recipeId}</h1>
+      <div className="reviews-container">
+        <div>
+          <form onSubmit={handleSubmit}>
+            <label>Review</label>
             <div>
+              <textarea
+                placeholder="Write your review here"
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
+                required
+              ></textarea>
               <div>
-                {reviewObj.comment} RATING - {reviewObj.star_rating}
+                <label>Rating</label>
+                <input
+                  type="number"
+                  min="1"
+                  max="5"
+                  value={reviewRating}
+                  onChange={(e) => setReviewRating(e.target.value)}
+                ></input>
               </div>
-              <div>
-                {reviewObj.user.firstName} {reviewObj.user.lastName}
-              </div>
-              <button> Future Update </button>
-              <button> Future Delete </button>
             </div>
-          </>
-        ))}
-        <button>Add Review</button>
+            <button>Add Review</button>
+          </form>
+        </div>
+        <div>
+          <div>Reviews Container</div>
+          {reviews?.map((reviewObj) => (
+            <ReviewComponent review={reviewObj} />
+          ))}
+        </div>
       </div>
     </>
   );
