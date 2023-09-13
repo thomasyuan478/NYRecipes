@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteReviewThunk } from "../../store/recipe";
 import { useState } from "react";
 import { updateReviewThunk } from "../../store/recipe";
+import "./ReviewComponent.css";
+
 
 export const ReviewComponent = ({ review }) => {
   const dispatch = useDispatch();
@@ -11,7 +13,6 @@ export const ReviewComponent = ({ review }) => {
   const id = review.id;
 
   const user = useSelector((state) => state.session.user);
-
 
   const deleteButton = (e) => {
     console.log(review.id);
@@ -51,12 +52,14 @@ export const ReviewComponent = ({ review }) => {
     if (!sessionUser) return false;
     else if (sessionUser.id != user_id) return false;
     else return true;
-
   };
 
   return (
     <>
-      <div>
+      <div className="individual-review">
+        <div>
+          {review.user.firstName} {review.user.lastName}
+        </div>
         <div>
           {update && (
             <form>
@@ -81,11 +84,10 @@ export const ReviewComponent = ({ review }) => {
               </div>
             </form>
           )}
-
-          {!update && review.comment} RATING - {review.star_rating}
+          {!update && review.comment}
         </div>
         <div>
-          {review.user.firstName} {review.user.lastName} // ReviewId-#
+          RATING - {review.star_rating} // ReviewId-#
           {review.id}
         </div>
         {!update && userCheck(user, review.user.id) && (

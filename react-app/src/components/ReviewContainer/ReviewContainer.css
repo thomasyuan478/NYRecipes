@@ -3,3 +3,16 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.review-creator{
+  display: flex;
+  align-items: center;
+}
+
+textarea{
+  resize: none;
+}
+
+.ar-b{
+  margin-top: 5px;
+}
