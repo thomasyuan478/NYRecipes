@@ -10,8 +10,7 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
   const [reviewRating, setReviewRating] = useState(0);
   const user = useSelector((state) => state.session.user);
 
-
-  if (reviews?.length == 0) return null;
+  // if (reviews?.length == 0) return null;
 
   const clearForm = () => {
     setReviewText("");
