@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postRecipeThunk } from "../../store/recipe";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -13,6 +13,8 @@ export const NewRecipeForm = () => {
   const [name, setName] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
 
+  const user = useSelector((state) => state.session.user);
+
   const formReset = () => {
     setCoverImage("");
     setDescription("");
@@ -25,7 +27,7 @@ export const NewRecipeForm = () => {
     e.preventDefault();
 
     const recipe = {
-      owner_id: 1,
+      owner_id: user.id,
       cover_image: coverImage,
       ingredient_list: ingredientList,
       description,
@@ -115,7 +117,10 @@ export const NewRecipeForm = () => {
           </div>
         </div>
         <div></div>
-        <button type="submit">Submit</button>
+        <button className="ar-b" disabled={!user} type="submit">
+          Submit
+        </button>
+        {!user && <p>You must be signed in to create a new recipe</p>}
       </form>
     </>
   );
