@@ -30,6 +30,32 @@ export const RecipeCard = ({ recipe }) => {
     else return true;
   };
 
+  const reviewsArray = recipe.rating;
+  console.log(reviewsArray);
+  let ratings = [];
+  reviewsArray.forEach((obj) => ratings.push(obj.star_rating));
+  console.log("array", ratings.length);
+
+  const starRating2 = (array) => {
+    if ((array.length = 0)) return 0;
+    else return array.reduce((acc, curr) => acc + curr, 0);
+  };
+
+  const starRating = (reviewsArray) => {
+    let returnArray = [];
+    reviewsArray.forEach((obj) => returnArray.push(obj.star_rating));
+    console.log(returnArray, "From Function");
+    let finalRating = returnArray.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    );
+    console.log(finalRating, "Final Rating from function");
+    if (finalRating == 0) return "No Reviews";
+    return finalRating / returnArray.length;
+  };
+
+  starRating(reviewsArray);
+
   return (
     <>
       <div className="rc-container">
@@ -38,16 +64,29 @@ export const RecipeCard = ({ recipe }) => {
           onClick={redirect}
           src={recipe.cover_image}
         ></img>
-        <div>{recipe.name}</div>
-        <div>{recipe.ingredient_list}</div>
-        <div>{recipe.description}</div>
-        <div>{recipe.instruction}</div>
-        {userCheck(user, recipe.owner_id) && (
-          <button onClick={UpdateRecipe}>Update</button>
-        )}
-        {userCheck(user, recipe.owner_id) && (
-          <button onClick={DeleteRecipe}>Delete</button>
-        )}
+        <div className="rc-bottom">
+          <div>
+            <div className="rc-name">{recipe.name}</div>
+            <div className="rc-chef">
+              {recipe.owner_name.firstName} {recipe.owner_name.lastName}
+            </div>
+          </div>
+          <div className="rc-rating">
+            Rating {starRating(recipe.rating)}
+            <div>
+              {userCheck(user, recipe.owner_id) && (
+                <button className="rc-update" onClick={UpdateRecipe}>
+                  Update
+                </button>
+              )}
+              {userCheck(user, recipe.owner_id) && (
+                <button className="rc-update" onClick={DeleteRecipe}>
+                  Delete
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

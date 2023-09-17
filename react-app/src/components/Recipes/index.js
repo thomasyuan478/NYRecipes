@@ -19,22 +19,28 @@ export const Recipes = () => {
 
   const ids = Object.keys(smallRecipes);
 
+  const sessionUser = useSelector((state) => state.session.user);
+
   // let featuredRecipe =
   //   smallRecipes[Math.random(Object.keys(smallRecipes).length)];
 
   return (
     <>
-      <FeaturedRecipe recipes={smallRecipes} />
-      <h1>Recipes Page</h1>
-      <button onClick={(e) => history.push("/new")}>
-        Click here if you would like to add a recipe
-      </button>
-      <div className="recipes-list">
-        {ids.map((id) => (
-          <div>
-            <RecipeCard key={id} recipe={smallRecipes[id]} />
-          </div>
-        ))}
+      <div className="page">
+        <FeaturedRecipe recipes={smallRecipes} />
+        <h1>Latest Recipes</h1>
+        {sessionUser && (
+          <button className="r-newrecipe" onClick={(e) => history.push("/new")}>
+            Click here if you would like to add a recipe!
+          </button>
+        )}
+        <div className="recipes-list">
+          {ids.map((id) => (
+            <div>
+              <RecipeCard key={id} recipe={smallRecipes[id]} />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

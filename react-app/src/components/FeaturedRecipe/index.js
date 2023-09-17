@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
+import "./FeaturedRecipe.css";
 
 const FeaturedRecipe = ({ recipes }) => {
   const history = useHistory();
@@ -21,21 +22,26 @@ const FeaturedRecipe = ({ recipes }) => {
     history.push(`/recipes/${recipe.id}`);
   };
 
-  console.log(recipe, Object.keys(recipes).length);
+  // console.log(recipe, Object.keys(recipes).length);
 
   return (
     <>
-      <h1>Hello from Featured Recipes</h1>
-      <div className="fr-container">
-        <img
-          className="fr-image"
-          onClick={redirect}
-          src={recipe?.cover_image}
-        ></img>
-        <div>{recipe?.name}</div>
-        <div>{recipe?.ingredient_list}</div>
-        <div>{recipe?.description}</div>
-        <div>{recipe?.instruction}</div>
+      <div>
+        <h1>Hello from Featured Recipes</h1>
+        <div className="fr-container">
+          <img
+            className="fr-image"
+            onClick={redirect}
+            src={recipe?.cover_image}
+          ></img>
+          <div className="fr-content">
+            <div className="fr-recipename">{recipe?.name}</div>
+            <div className="fr-chefname">
+              by {recipe?.owner_name.firstName} {recipe?.owner_name.lastName}{" "}
+            </div>
+            <div className="fr-description">{recipe?.description}</div>
+          </div>
+        </div>
       </div>
     </>
   );

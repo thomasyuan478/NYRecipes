@@ -1,0 +1,22 @@
+.fr-container{
+  display: flex;
+}
+
+.fr-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 30px;
+}
+
+.fr-recipename{
+  font-size: xx-large;
+}
+
+.fr-chefname{
+  font-size: large
+}
+
+.page{
+  margin: 30px;
+}
