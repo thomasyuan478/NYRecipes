@@ -4,7 +4,6 @@ import { useState } from "react";
 import { updateReviewThunk } from "../../store/recipe";
 import "./ReviewComponent.css";
 
-
 export const ReviewComponent = ({ review }) => {
   const dispatch = useDispatch();
   const [update, setUpdate] = useState(false);
@@ -40,7 +39,7 @@ export const ReviewComponent = ({ review }) => {
         comment: newComment,
         star_rating: newRating,
         recipe_id: review.recipe.id,
-        user_id: 1,
+        user_id: user.id,
       };
 
       dispatch(updateReviewThunk(updateReview));
