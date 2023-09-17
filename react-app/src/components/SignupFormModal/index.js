@@ -33,6 +33,8 @@ function SignupFormModal() {
     }
   };
 
+  console.log(errors);
+
   return (
     <>
       <div>
