@@ -1,0 +1,12 @@
+.recipes-list{
+  display: flex;
+  overflow-x: scroll;
+}
+
+.r-newrecipe {
+  background-color: white;
+  /* border: none; */
+  text-decoration: underline;
+  /* background-color: orange; */
+  border: none;
+}

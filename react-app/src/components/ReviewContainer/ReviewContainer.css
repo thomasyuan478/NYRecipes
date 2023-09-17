@@ -1,7 +1,36 @@
 .reviews-container{
-  border: 1px black solid;
+  /* border: 1px black solid; */
   display: flex;
-  justify-content: space-evenly;
+  width: 1100px;
+}
+
+.review-creator{
+  display: flex;
+  /* align-items: center;
+  justify-content: center; */
+  width: 500px;
+  border-top: 1px black solid;
+  }
+
+textarea{
+  resize: none;
+}
+
+.ar-b{
+  margin-top: 5px;
+}
+
+.rc-reviews{
+  margin-left: 30px;
+  border-top: black 1px solid;
+  width: 600px;
+}
+
+/* .reviews-container{
+  /* border-top: black 1px solid; */
+
+.error {
+  color: red;
 }
 
 .review-creator{

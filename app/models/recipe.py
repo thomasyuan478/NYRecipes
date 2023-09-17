@@ -26,17 +26,20 @@ class Recipe(db.Model):
     return{
     'id': self.id,
     'owner_id': self.owner_id,
+    'owner_name': self.user.to_dict_info(),
     'name': self.name,
     'ingredient_list': self.ingredient_list,
     'description': self.description,
     'cover_image': self.cover_image,
-    'instruction': self.instruction
+    'instruction': self.instruction,
+    'rating': [review.to_dict_rating() for review in self.reviews]
     }
 
   def to_dict_detailed(self):
     return{
     'id': self.id,
     'owner_id': self.owner_id,
+    'owner_name': self.user.to_dict_info(),
     'name': self.name,
     'ingredient_list': self.ingredient_list,
     'description': self.description,

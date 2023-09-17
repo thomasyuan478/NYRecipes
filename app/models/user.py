@@ -48,3 +48,10 @@ class User(db.Model, UserMixin):
             'lastName': self.last_name,
             'email': self.email
         }
+
+    def to_dict_info(self):
+        return {
+            'id': self.id,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
+        }

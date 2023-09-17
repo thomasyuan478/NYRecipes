@@ -24,3 +24,8 @@ class Review(db.Model):
       'star_rating': self.star_rating,
       'comment': self.comment
     }
+
+  def to_dict_rating(self):
+    return{
+      'star_rating': self.star_rating
+    }

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { getSingleRecipeThunk } from "../../store/recipe";
 import { ReviewContainer } from "../ReviewContainer";
 import { deleteRecipeThunk } from "../../store/recipe";
+import "./RecipeDetail.css";
 
 export const RecipeDetail = () => {
   const { recipeId } = useParams();
@@ -41,24 +42,59 @@ export const RecipeDetail = () => {
     else return true;
   };
 
+  const starRating = (reviewsArray) => {
+    let returnArray = [];
+    reviewsArray.forEach((obj) => returnArray.push(obj.star_rating));
+    let finalRating = returnArray.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    );
+    if (finalRating == 0) return "No Reviews";
+    return (finalRating / returnArray.length).toFixed(2);
+  };
+
   return (
     <>
-      <h1>Hello from details Recipe:{recipeId}</h1>
-      <div>
-        <img src={recipe.cover_image}></img>
-        <div>{recipe.name}</div>
-        <div>{recipe.ingredient_list}</div>
-        <div>{recipe.description}</div>
-        <div>{recipe.instruction}</div>
-      </div>
-      <div>
-        {userCheck(user, recipe.owner_id) && (
-          <button onClick={UpdateRecipe}>Update</button>
-        )}
-        {userCheck(user, recipe.owner_id) && (
-          <button onClick={DeleteRecipe}>Delete</button>
-        )}
-        <p></p>
+      <div className="page">
+        <div className="rd-sectioncontainer">
+          <div className="rd-leftsection">
+            <div className="rd-section1">
+              <h1 className="rd-title">{recipe.name}</h1>
+              <h2 className="rd-chef">
+                by {recipe.owner_name?.firstName} {recipe.owner_name?.lastName}
+              </h2>
+              <div className="rd-buttoncontainer">
+                {userCheck(user, recipe.owner_id) && (
+                  <button onClick={UpdateRecipe}>Update</button>
+                )}
+                {userCheck(user, recipe.owner_id) && (
+                  <button onClick={DeleteRecipe}>Delete</button>
+                )}
+              </div>
+            </div>
+            <div className="rd-section2">
+              <h2>Rating: {starRating(recipe.reviews)}</h2>
+              {/* <p>Notes</p> */}
+            </div>
+            <div className="rd-section3">
+              <h2>Ingredients</h2>
+              {recipe.ingredient_list}
+            </div>
+          </div>
+
+          <div className="rd-rightsection">
+            <div className="rd-section1">
+              <img className="rd-image" src={recipe.cover_image}></img>
+            </div>
+            <div className="rd-section2">
+              <p className="rd-description">{recipe.description}</p>
+            </div>
+            <div className="rd-section3">
+              <h2>Preparation</h2>
+              {recipe.instruction}
+            </div>
+          </div>
+        </div>
       </div>
 
       <ReviewContainer reviews={recipe.reviews} recipeId={recipe.id} />

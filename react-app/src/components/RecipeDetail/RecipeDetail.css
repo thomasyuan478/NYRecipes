@@ -1,0 +1,54 @@
+.rd-sectioncontainer{
+  display: flex;
+}
+.rd-leftsection{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+.rd-section1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 450px;
+  width: 500px;
+}
+
+.rd-section3{
+  border-top: 1px black solid;
+}
+
+.rd-buttoncontainer > button{
+  margin: 0px 5px;
+}
+
+.rd-section2{
+  height: 200px
+}
+
+.rd-title{
+  margin-right: 30px;
+  width: 400px;
+}
+
+.rd-leftside{
+  width: 420px
+}
+
+.rd-rightsection{
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+
+.rd-rightside{
+  justify-content: right;
+  margin-left: 275px;
+}
+
+.rd-image{
+  max-height: 450px;
+  max-width: 500px;
+}

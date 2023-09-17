@@ -1,0 +1,42 @@
+.lf-modal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.lf-title{
+  display: flex;
+  justify-content: center;
+}
+
+.lf-field{
+  margin: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lf-buttoncontainer{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.lf-input{
+  min-width: 200px;
+}
+
+.lf-button{
+  padding: 5px;
+  width: 120px;
+}
+
+.lf-login{
+  background-color: orange;
+}
+
+.lf-demo{
+  background-color: orange;
+}
