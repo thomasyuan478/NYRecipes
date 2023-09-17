@@ -6,6 +6,9 @@
   cursor: pointer;
 }
 
+.fr-image{
+  max-height: 500px;
+}
 
 .fr-content{
   display: flex;

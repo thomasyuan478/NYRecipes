@@ -50,7 +50,7 @@ export const RecipeDetail = () => {
             <div className="rd-section1">
               <h1 className="rd-title">{recipe.name}</h1>
               <h2 className="rd-chef">
-                by {recipe.owner_name.firstName} {recipe.owner_name.lastName}
+                by {recipe.owner_name?.firstName} {recipe.owner_name?.lastName}
               </h2>
               <div className="rd-buttoncontainer">
                 {userCheck(user, recipe.owner_id) && (

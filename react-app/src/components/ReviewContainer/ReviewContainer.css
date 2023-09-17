@@ -1,13 +1,14 @@
 .reviews-container{
   /* border: 1px black solid; */
   display: flex;
+  width: 1100px;
 }
 
 .review-creator{
   display: flex;
   /* align-items: center;
   justify-content: center; */
-  width: 435px;
+  width: 500px;
   border-top: 1px black solid;
   }
 
@@ -20,11 +21,15 @@ textarea{
 }
 
 .rc-reviews{
-  margin-left: 10px;
+  margin-left: 30px;
   border-top: black 1px solid;
-  width: auto;
+  width: 600px;
 }
 
 .reviews-container{
   /* border-top: black 1px solid; */
+}
+
+.error {
+  color: red;
 }

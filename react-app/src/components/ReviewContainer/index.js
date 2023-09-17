@@ -9,6 +9,7 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
   const [reviewText, setReviewText] = useState("");
   const [reviewRating, setReviewRating] = useState(0);
   const user = useSelector((state) => state.session.user);
+  const [errorValidation, setErrorValidation] = useState({});
 
   // if (reviews?.length == 0) return null;
 
@@ -19,15 +20,23 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const review = {
-      comment: reviewText,
-      star_rating: reviewRating,
-      recipe_id: recipeId,
-      user_id: 1,
-    };
-    // console.log(review);
-    dispatch(addReviewThunk(review));
-    clearForm();
+
+    if (reviewText.length < 10) {
+      setErrorValidation({
+        Review: "Review must be greater than 10 characters",
+      });
+    } else {
+      const review = {
+        comment: reviewText,
+        star_rating: reviewRating,
+        recipe_id: recipeId,
+        user_id: 1,
+      };
+      // console.log(review);
+      dispatch(addReviewThunk(review));
+      setErrorValidation({});
+      clearForm();
+    }
   };
 
   return (
@@ -41,12 +50,14 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
               <label>Review</label>
               <div>
                 <textarea
+                  className="rc-inputbox"
                   placeholder="Write your review here"
                   value={reviewText}
                   onChange={(e) => setReviewText(e.target.value)}
                   required
                   cols={"50"}
                   rows={"10"}
+                  maxLength={"255"}
                 ></textarea>
                 <div>
                   <label>Rating </label>
@@ -62,6 +73,9 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
               <button className="ar-b" disabled={!user}>
                 Add Review
               </button>
+              {errorValidation.Review && (
+                <p className="error">{errorValidation.Review}</p>
+              )}
               {!user && <p>You must be signed in to write a review</p>}
             </form>
           </div>

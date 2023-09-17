@@ -68,6 +68,8 @@ export const ReviewComponent = ({ review }) => {
                   onChange={(e) => setNewComment(e.target.value)}
                   cols={"50"}
                   rows={"10"}
+                  minLength={"10"}
+                  maxLength={"255"}
                   required
                 ></textarea>
                 <div>

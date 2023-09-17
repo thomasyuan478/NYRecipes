@@ -4,7 +4,7 @@
 .rd-leftsection{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .rd-section1{
@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   height: 450px;
+  width: 500px;
 }
 
 .rd-section3{
@@ -28,6 +29,7 @@
 
 .rd-title{
   margin-right: 30px;
+  width: 400px;
 }
 
 .rd-leftside{
@@ -44,4 +46,9 @@
 .rd-rightside{
   justify-content: right;
   margin-left: 275px;
+}
+
+.rd-image{
+  max-height: 450px;
+  max-width: 500px;
 }

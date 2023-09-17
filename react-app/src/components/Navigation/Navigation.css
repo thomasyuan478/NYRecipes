@@ -12,6 +12,7 @@
 
 .profile-dropdown > li {
   list-style: none;
+  margin-top: 5px;
 }
 
 .hidden {
