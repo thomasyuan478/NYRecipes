@@ -31,10 +31,10 @@ export const RecipeCard = ({ recipe }) => {
   };
 
   const reviewsArray = recipe.rating;
-  console.log(reviewsArray);
+  // console.log(reviewsArray);
   let ratings = [];
   reviewsArray.forEach((obj) => ratings.push(obj.star_rating));
-  console.log("array", ratings.length);
+  // console.log("array", ratings.length);
 
   const starRating2 = (array) => {
     if ((array.length = 0)) return 0;
@@ -44,26 +44,22 @@ export const RecipeCard = ({ recipe }) => {
   const starRating = (reviewsArray) => {
     let returnArray = [];
     reviewsArray.forEach((obj) => returnArray.push(obj.star_rating));
-    console.log(returnArray, "From Function");
+    // console.log(returnArray, "From Function");
     let finalRating = returnArray.reduce(
       (accumulator, currentValue) => accumulator + currentValue,
       0
     );
-    console.log(finalRating, "Final Rating from function");
+    // console.log(finalRating, "Final Rating from function");
     if (finalRating == 0) return "No Reviews";
-    return finalRating / returnArray.length;
+    return (finalRating / returnArray.length).toFixed(2);
   };
 
   starRating(reviewsArray);
 
   return (
     <>
-      <div className="rc-container">
-        <img
-          className="rc-image"
-          onClick={redirect}
-          src={recipe.cover_image}
-        ></img>
+      <div onClick={redirect} className="rc-container">
+        <img className="rc-image" src={recipe.cover_image}></img>
         <div className="rc-bottom">
           <div>
             <div className="rc-name">{recipe.name}</div>
@@ -74,7 +70,7 @@ export const RecipeCard = ({ recipe }) => {
           <div className="rc-rating">
             Rating {starRating(recipe.rating)}
             <div>
-              {userCheck(user, recipe.owner_id) && (
+              {/* {userCheck(user, recipe.owner_id) && (
                 <button className="rc-update" onClick={UpdateRecipe}>
                   Update
                 </button>
@@ -83,7 +79,7 @@ export const RecipeCard = ({ recipe }) => {
                 <button className="rc-update" onClick={DeleteRecipe}>
                   Delete
                 </button>
-              )}
+              )} */}
             </div>
           </div>
         </div>

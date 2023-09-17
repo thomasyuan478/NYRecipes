@@ -2,6 +2,11 @@
   display: flex;
 }
 
+.fr-container > img:hover {
+  cursor: pointer;
+}
+
+
 .fr-content{
   display: flex;
   flex-direction: column;
@@ -19,4 +24,5 @@
 
 .page{
   margin: 30px;
+  width: 1050px;
 }

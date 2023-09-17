@@ -39,6 +39,7 @@ class Recipe(db.Model):
     return{
     'id': self.id,
     'owner_id': self.owner_id,
+    'owner_name': self.user.to_dict_info(),
     'name': self.name,
     'ingredient_list': self.ingredient_list,
     'description': self.description,
