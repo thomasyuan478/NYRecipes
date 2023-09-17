@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteRecipeThunk } from "../../store/recipe";
 import { useHistory } from "react-router-dom";
+import "./RecipeCard.css";
 
 export const RecipeCard = ({ recipe }) => {
   const dispatch = useDispatch();
@@ -31,8 +32,12 @@ export const RecipeCard = ({ recipe }) => {
 
   return (
     <>
-      <div>
-        <img onClick={redirect} src={recipe.cover_image}></img>
+      <div className="rc-container">
+        <img
+          className="rc-image"
+          onClick={redirect}
+          src={recipe.cover_image}
+        ></img>
         <div>{recipe.name}</div>
         <div>{recipe.ingredient_list}</div>
         <div>{recipe.description}</div>

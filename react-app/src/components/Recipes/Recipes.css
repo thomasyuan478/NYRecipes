@@ -1,0 +1,4 @@
+.recipes-list{
+  display: flex;
+  overflow-x: scroll;
+}
