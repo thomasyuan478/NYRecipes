@@ -54,7 +54,7 @@ export const RecipeCard = ({ recipe }) => {
     return (finalRating / returnArray.length).toFixed(2);
   };
 
-  starRating(reviewsArray);
+  // starRating(reviewsArray);
 
   return (
     <>

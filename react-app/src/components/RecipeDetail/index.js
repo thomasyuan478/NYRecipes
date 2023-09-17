@@ -42,6 +42,17 @@ export const RecipeDetail = () => {
     else return true;
   };
 
+  const starRating = (reviewsArray) => {
+    let returnArray = [];
+    reviewsArray.forEach((obj) => returnArray.push(obj.star_rating));
+    let finalRating = returnArray.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    );
+    if (finalRating == 0) return "No Reviews";
+    return (finalRating / returnArray.length).toFixed(2);
+  };
+
   return (
     <>
       <div className="page">
@@ -62,8 +73,8 @@ export const RecipeDetail = () => {
               </div>
             </div>
             <div className="rd-section2">
-              <p>Rating</p>
-              <p>Notes</p>
+              <h2>Rating: {starRating(recipe.reviews)}</h2>
+              {/* <p>Notes</p> */}
             </div>
             <div className="rd-section3">
               <h2>Ingredients</h2>
