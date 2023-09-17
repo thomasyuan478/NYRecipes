@@ -73,7 +73,7 @@ export const RecipeDetail = () => {
               </div>
             </div>
             <div className="rd-section2">
-              <h2>Rating: {starRating(recipe.reviews)}</h2>
+              <h2>Rating: {recipe.reviews && starRating(recipe.reviews)}</h2>
               {/* <p>Notes</p> */}
             </div>
             <div className="rd-section3">
