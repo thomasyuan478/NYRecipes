@@ -56,48 +56,52 @@ export const ReviewComponent = ({ review }) => {
   return (
     <>
       <div className="individual-review">
-        <div>
-          {review.user.firstName} {review.user.lastName}
-        </div>
-        <div>
-          {update && (
-            <form>
-              <textarea
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                required
-              ></textarea>
-              <div>
-                <label>Rating</label>
-                <input
-                  type="number"
-                  min="1"
-                  max="5"
+        <div className="rc-content">
+          <div>
+            {review.user.firstName} {review.user.lastName}
+          </div>
+          <div>
+            {update && (
+              <form>
+                <textarea
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  cols={"50"}
+                  rows={"10"}
                   required
-                  value={newRating}
-                  onChange={(e) => setNewRating(e.target.value)}
-                ></input>
-              </div>
-              <div>
-                <button onClick={submitUpdate}>Submit </button>
-              </div>
-            </form>
+                ></textarea>
+                <div>
+                  <label>Rating</label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="5"
+                    required
+                    value={newRating}
+                    onChange={(e) => setNewRating(e.target.value)}
+                  ></input>
+                </div>
+                <div>
+                  <button onClick={submitUpdate}>Submit </button>
+                </div>
+              </form>
+            )}
+            {!update && review.comment}
+          </div>
+          <div>
+            RATING - {review.star_rating} // ReviewId-#
+            {review.id}
+          </div>
+          {!update && userCheck(user, review.user.id) && (
+            <button onClick={toggleUpdate}> Update </button>
           )}
-          {!update && review.comment}
+          {update && userCheck(user, review.user.id) && (
+            <button onClick={toggleUpdate}> Cancel </button>
+          )}
+          {userCheck(user, review.user.id) && (
+            <button onClick={deleteButton}> Delete </button>
+          )}
         </div>
-        <div>
-          RATING - {review.star_rating} // ReviewId-#
-          {review.id}
-        </div>
-        {!update && userCheck(user, review.user.id) && (
-          <button onClick={toggleUpdate}> Update </button>
-        )}
-        {update && userCheck(user, review.user.id) && (
-          <button onClick={toggleUpdate}> Cancel </button>
-        )}
-        {userCheck(user, review.user.id) && (
-          <button onClick={deleteButton}> Delete </button>
-        )}
       </div>
     </>
   );

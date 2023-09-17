@@ -32,42 +32,45 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
 
   return (
     <>
-      <h1>Hello From Reviews Component Recipe: {recipeId}</h1>
-      <div className="reviews-container">
-        <div className="review-creator">
-          <form onSubmit={handleSubmit}>
-            <label>Review</label>
-            <div>
-              <textarea
-                placeholder="Write your review here"
-                value={reviewText}
-                onChange={(e) => setReviewText(e.target.value)}
-                required
-                cols={"30"}
-                rows={"5"}
-              ></textarea>
+      <div className="page">
+        {/* <h1>Hello From Reviews Component Recipe: {recipeId}</h1> */}
+        <div className="reviews-container">
+          <div className="review-creator">
+            <form onSubmit={handleSubmit}>
+              <h2>Ratings</h2>
+              <label>Review</label>
               <div>
-                <label>Rating </label>
-                <input
-                  type="number"
-                  min="1"
-                  max="5"
-                  value={reviewRating}
-                  onChange={(e) => setReviewRating(e.target.value)}
-                ></input>
+                <textarea
+                  placeholder="Write your review here"
+                  value={reviewText}
+                  onChange={(e) => setReviewText(e.target.value)}
+                  required
+                  cols={"50"}
+                  rows={"10"}
+                ></textarea>
+                <div>
+                  <label>Rating </label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="5"
+                    value={reviewRating}
+                    onChange={(e) => setReviewRating(e.target.value)}
+                  ></input>
+                </div>
               </div>
-            </div>
-            <button className="ar-b" disabled={!user}>
-              Add Review
-            </button>
-            {!user && <p>You must be signed in to write a review</p>}
-          </form>
-        </div>
-        <div>
-          <div>Reviews Container</div>
-          {reviews?.map((reviewObj) => (
-            <ReviewComponent review={reviewObj} />
-          ))}
+              <button className="ar-b" disabled={!user}>
+                Add Review
+              </button>
+              {!user && <p>You must be signed in to write a review</p>}
+            </form>
+          </div>
+          <div className="rc-reviews">
+            <h2>Cooking Notes</h2>
+            {reviews?.map((reviewObj) => (
+              <ReviewComponent review={reviewObj} />
+            ))}
+          </div>
         </div>
       </div>
     </>

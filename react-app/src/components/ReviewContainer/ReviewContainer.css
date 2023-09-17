@@ -1,13 +1,15 @@
 .reviews-container{
-  border: 1px black solid;
+  /* border: 1px black solid; */
   display: flex;
-  justify-content: space-evenly;
 }
 
 .review-creator{
   display: flex;
-  align-items: center;
-}
+  /* align-items: center;
+  justify-content: center; */
+  width: 435px;
+  border-top: 1px black solid;
+  }
 
 textarea{
   resize: none;
@@ -15,4 +17,14 @@ textarea{
 
 .ar-b{
   margin-top: 5px;
+}
+
+.rc-reviews{
+  margin-left: 10px;
+  border-top: black 1px solid;
+  width: auto;
+}
+
+.reviews-container{
+  /* border-top: black 1px solid; */
 }
