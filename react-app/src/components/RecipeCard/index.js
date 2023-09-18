@@ -8,17 +8,17 @@ export const RecipeCard = ({ recipe }) => {
   const history = useHistory();
 
   const DeleteRecipe = (e) => {
-    console.log("delete button");
+    // console.log("delete button");
     dispatch(deleteRecipeThunk(recipe.id));
   };
 
   const UpdateRecipe = (e) => {
-    console.log("edit button");
+    // console.log("edit button");
     history.push(`/recipes/${recipe.id}/edit`);
   };
 
   const redirect = (e) => {
-    console.log("Detail");
+    // console.log("Detail");
     history.push(`/recipes/${recipe.id}`);
   };
 
