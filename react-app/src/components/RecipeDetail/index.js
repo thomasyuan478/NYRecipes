@@ -7,6 +7,9 @@ import { getSingleRecipeThunk } from "../../store/recipe";
 import { ReviewContainer } from "../ReviewContainer";
 import { deleteRecipeThunk } from "../../store/recipe";
 import "./RecipeDetail.css";
+import ConfirmationModal from "../ConfirmationModal";
+
+import OpenModalButton from "../OpenModalButton";
 
 export const RecipeDetail = () => {
   const { recipeId } = useParams();
@@ -68,7 +71,10 @@ export const RecipeDetail = () => {
                   <button onClick={UpdateRecipe}>Update</button>
                 )}
                 {userCheck(user, recipe.owner_id) && (
-                  <button onClick={DeleteRecipe}>Delete</button>
+                  <OpenModalButton
+                    buttonText={"Delete"}
+                    modalComponent={<ConfirmationModal recipeId={recipe.id} />}
+                  />
                 )}
               </div>
             </div>

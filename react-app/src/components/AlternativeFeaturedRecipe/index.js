@@ -2,10 +2,10 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
 import "./FeaturedRecipe.css";
 
-const FeaturedRecipe = ({ recipes }) => {
+const AlternateFeaturedRecipe = () => {
   const history = useHistory();
 
-  // const recipes = useSelector((state) => state.recipes);
+  const recipes = useSelector((state) => state.recipes);
   // const smallRecipes = recipes.recipes;
 
   // const ids = Object.keys(smallRecipes);
@@ -14,12 +14,18 @@ const FeaturedRecipe = ({ recipes }) => {
     return Math.floor(Math.random() * max);
   }
 
-  let index = getRandomInt(Object.keys(recipes).length);
+  let keysArray = Object.keys(recipes.recipes);
+  // console.log(keysArray);
+  let index = getRandomInt(Object.keys(keysArray).length);
+  let featured = keysArray[index];
 
-  const recipe = recipes[index];
+  const recipe = recipes.recipes[featured];
 
-  console.log("Index", index);
-  console.log("Recipe", recipe);
+  // const recipe = recipes[index];
+  // console.log(index, recipe, recipes.recipes);
+
+  // console.log("Index", index);
+  // console.log("Recipe", recipe);
 
   const redirect = () => {
     history.push(`/recipes/${recipe.id}`);
@@ -50,4 +56,4 @@ const FeaturedRecipe = ({ recipes }) => {
   );
 };
 
-export default FeaturedRecipe;
+export default AlternateFeaturedRecipe;

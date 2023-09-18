@@ -1,0 +1,31 @@
+.fr-container{
+  display: flex;
+}
+
+.fr-container > img:hover {
+  cursor: pointer;
+}
+
+.fr-image{
+  max-height: 500px;
+}
+
+.fr-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 30px;
+}
+
+.fr-recipename{
+  font-size: xx-large;
+}
+
+.fr-chefname{
+  font-size: large
+}
+
+.page{
+  margin: 30px;
+  width: 1050px;
+}
