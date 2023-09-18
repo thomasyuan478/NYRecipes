@@ -18,6 +18,9 @@ const FeaturedRecipe = ({ recipes }) => {
 
   const recipe = recipes[index];
 
+  console.log("Index", index);
+  console.log("Recipe", recipe);
+
   const redirect = () => {
     history.push(`/recipes/${recipe.id}`);
   };
@@ -27,7 +30,7 @@ const FeaturedRecipe = ({ recipes }) => {
   return (
     <>
       <div>
-        <h1>Hello from Featured Recipes</h1>
+        <h1>Featured Recipe</h1>
         <div className="fr-container">
           <img
             className="fr-image"

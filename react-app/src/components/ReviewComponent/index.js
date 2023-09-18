@@ -3,6 +3,8 @@ import { deleteReviewThunk } from "../../store/recipe";
 import { useState } from "react";
 import { updateReviewThunk } from "../../store/recipe";
 import "./ReviewComponent.css";
+import ConfirmationModal from "../ConfirmationModal";
+import OpenModalButton from "../OpenModalButton";
 
 export const ReviewComponent = ({ review }) => {
   const dispatch = useDispatch();
@@ -90,10 +92,7 @@ export const ReviewComponent = ({ review }) => {
             )}
             {!update && review.comment}
           </div>
-          <div>
-            RATING - {review.star_rating} // ReviewId-#
-            {review.id}
-          </div>
+          <div> {review.star_rating} // 5</div>
           {!update && userCheck(user, review.user.id) && (
             <button onClick={toggleUpdate}> Update </button>
           )}
@@ -101,7 +100,12 @@ export const ReviewComponent = ({ review }) => {
             <button onClick={toggleUpdate}> Cancel </button>
           )}
           {userCheck(user, review.user.id) && (
-            <button onClick={deleteButton}> Delete </button>
+            <OpenModalButton
+              buttonText={"Delete"}
+              modalComponent={
+                <ConfirmationModal reviewId={review.id} review={review} />
+              }
+            />
           )}
         </div>
       </div>

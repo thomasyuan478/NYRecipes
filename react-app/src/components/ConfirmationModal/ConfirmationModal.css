@@ -1,0 +1,37 @@
+.cm-title{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.cm-text{
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.cm-buttoncontainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.cm-b{
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.cm-b:hover{
+  cursor: pointer;
+}
+
+.yes{
+  background-color: rgb(219, 0, 0);
+  color: white;
+}
+
+.no{
+  background-color: rgb(207, 207, 207);
+}
