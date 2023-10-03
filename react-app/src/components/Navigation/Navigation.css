@@ -1,5 +1,5 @@
 .profile-dropdown {
-  position: absolute;
+  position: relative;
   display: flex;
   right: 70px;
   top: 75px;
@@ -24,12 +24,12 @@
 }
 
 .nav-container{
-  margin: 25px 30px;
+  margin: 30px 10%;
   display: flex;
   justify-content: space-between;
-  border: gray 1px solid;
+  border-bottom: gray 1px solid;
   padding: 30px;
-  width: 1000px
+  width: 1000px;
 }
 
 .nav-title{
