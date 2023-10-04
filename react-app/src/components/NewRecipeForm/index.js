@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postRecipeThunk } from "../../store/recipe";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./NewRecipeForm.css";
+import { createImage } from "../../store/recipe";
 
 export const NewRecipeForm = () => {
   const history = useHistory();
@@ -13,6 +14,8 @@ export const NewRecipeForm = () => {
   const [instruction, setInstruction] = useState("");
   const [name, setName] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
+  const [Image, setImage] = useState();
+  const [returnImage, setReturnImage] = useState();
 
   const user = useSelector((state) => state.session.user);
 
@@ -23,6 +26,16 @@ export const NewRecipeForm = () => {
     setInstruction("");
     setName("");
   };
+
+  useEffect(() => {
+    if (Image) {
+      const formdata = new FormData();
+      formdata.append("image", Image);
+      dispatch(createImage(formdata)).then((res) => setReturnImage(res.url));
+    }
+  }, [Image]);
+
+  const imageSubmit = () => {};
 
   const submitRecipe = (e) => {
     e.preventDefault();
@@ -46,7 +59,7 @@ export const NewRecipeForm = () => {
     } else {
       const recipe = {
         owner_id: user.id,
-        cover_image: coverImage,
+        cover_image: returnImage,
         ingredient_list: ingredientList,
         description,
         instruction,
@@ -73,6 +86,17 @@ export const NewRecipeForm = () => {
 
   return (
     <>
+      <div className="page">
+        <form onSubmit={imageSubmit} encType="multipart/formdata">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImage(e.target.files[0])}
+          ></input>
+          {Image && <p>Image</p>}
+          {returnImage && <img src={returnImage}></img>}
+        </form>
+      </div>
       <div className="page">
         <h3>New Recipe</h3>
         <form onSubmit={submitRecipe}>
@@ -131,7 +155,7 @@ export const NewRecipeForm = () => {
               )}
             </div>
           </div>
-          <div>
+          {/* <div>
             <label>Cover Image</label>
             <div>
               <input
@@ -144,7 +168,7 @@ export const NewRecipeForm = () => {
                 id="cover_image"
               ></input>
             </div>
-          </div>
+          </div> */}
           <div>
             <label>Ingredient List</label>
             <div>

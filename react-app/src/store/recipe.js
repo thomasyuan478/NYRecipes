@@ -143,6 +143,20 @@ export const updateReviewThunk = (review) => async (dispatch) => {
   }
 };
 
+export const createImage = (image) => async (dispatch) => {
+  console.log("From Create Image Thnk", image);
+
+  const response = await fetch(`/api/images/new`, {
+    method: "POST",
+    body: image,
+  });
+
+  if (response.ok) {
+    const res = await response.json();
+    console.log(res, "in RESPONSE");
+    return res;
+  }
+};
 
 //Reducer
 const initialState = {
