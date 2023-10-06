@@ -46,7 +46,8 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'firstName': self.first_name,
             'lastName': self.last_name,
-            'email': self.email
+            'email': self.email,
+            'favorites': [recipe.to_dict_short() for recipe in self.favorites]
         }
 
     def to_dict_info(self):

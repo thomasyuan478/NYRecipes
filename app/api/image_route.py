@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def upload_image():
     form = ImageForm()
-    print("In Route", form.data)
+    # print("In Route", form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():

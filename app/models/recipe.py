@@ -47,3 +47,9 @@ class Recipe(db.Model):
     'instruction': self.instruction,
     'reviews': [review.to_dict() for review in self.reviews]
     }
+
+  def to_dict_short(self):
+    return{
+      'id': self.id,
+      'owner_id': self.owner_id
+    }

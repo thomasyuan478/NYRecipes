@@ -7,6 +7,8 @@ export const RecipeCard = ({ recipe }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  // console.log(recipe);
+
   const DeleteRecipe = (e) => {
     // console.log("delete button");
     dispatch(deleteRecipeThunk(recipe.id));

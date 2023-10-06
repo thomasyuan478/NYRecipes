@@ -11,6 +11,7 @@ import { NewRecipeForm } from "./components/NewRecipeForm";
 import { RecipeDetail } from "./components/RecipeDetail";
 import { EditRecipeForm } from "./components/EditRecipe";
 import { NewEditRecipe } from "./components/NewEditRecipe";
+import { UserDetails } from "./components/UserDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/new">
             <NewRecipeForm />
+          </Route>
+          <Route exact path="/details">
+            <UserDetails />
           </Route>
           <Route path="/login">
             <LoginFormPage />

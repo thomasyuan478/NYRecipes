@@ -8,6 +8,8 @@ import { ReviewContainer } from "../ReviewContainer";
 import { deleteRecipeThunk } from "../../store/recipe";
 import "./RecipeDetail.css";
 import ConfirmationModal from "../ConfirmationModal";
+import { addFavoriteThunk, deleteFavoriteThunk } from "../../store/session";
+import { useState } from "react";
 
 import OpenModalButton from "../OpenModalButton";
 
@@ -21,7 +23,10 @@ export const RecipeDetail = () => {
   // const group = useSelector((state) => state.groups.singleGroup);
   // const event = useSelector((state) => state.events.SingleEvent);
   // const images = useSelector((state) => state.events.SingleEvent.EventImages);
+  const [favorites, setFavorites] = useState([]);
+  const [userId, setUserId] = useState();
   const user = useSelector((state) => state.session.user);
+  const recipe = useSelector((state) => state.recipes.singleRecipe);
 
   const DeleteRecipe = (e) => {
     console.log("delete button");
@@ -35,14 +40,40 @@ export const RecipeDetail = () => {
 
   useEffect(() => {
     dispatch(getSingleRecipeThunk(recipeId));
+    setUserId(user.id);
   }, [dispatch]);
 
-  const recipe = useSelector((state) => state.recipes.singleRecipe);
+  const normalizeFavorites = (sessionUser) => {
+    let normalizedFavorites = [];
+    let favorites = sessionUser.favorites;
+    if (favorites) {
+      favorites.forEach((obj) => normalizedFavorites.push(obj.id));
+    }
+    return normalizedFavorites;
+  };
+
+  useEffect(() => {
+    setFavorites(normalizeFavorites(user));
+  }, [user]);
 
   const userCheck = (sessionUser, recipeUserId) => {
     if (!sessionUser) return false;
     else if (sessionUser.id != recipeUserId) return false;
     else return true;
+  };
+
+  const favoriteCheck = (sessionUser, recipeId) => {
+    if (!sessionUser) return false;
+    if (favorites.includes(recipeId)) return false;
+    else return true;
+  };
+
+  const Favorite = () => {
+    dispatch(addFavoriteThunk(userId, recipe.id));
+  };
+
+  const Unfavorite = () => {
+    dispatch(deleteFavoriteThunk(userId, recipe.id));
   };
 
   const starRating = (reviewsArray) => {
@@ -75,6 +106,12 @@ export const RecipeDetail = () => {
                     buttonText={"Delete"}
                     modalComponent={<ConfirmationModal recipeId={recipe.id} />}
                   />
+                )}
+                {user && favoriteCheck(user, recipe.id) && (
+                  <button onClick={Favorite}>Favorite</button>
+                )}
+                {user && !favoriteCheck(user, recipe.id) && (
+                  <button onClick={Unfavorite}>Unfavorite</button>
                 )}
               </div>
             </div>
