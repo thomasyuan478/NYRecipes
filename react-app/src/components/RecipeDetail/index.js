@@ -11,6 +11,7 @@ import ConfirmationModal from "../ConfirmationModal";
 import { addFavoriteThunk, deleteFavoriteThunk } from "../../store/session";
 import { useState } from "react";
 
+
 import OpenModalButton from "../OpenModalButton";
 
 export const RecipeDetail = () => {

@@ -16,6 +16,7 @@ const AlternateFeaturedRecipe = () => {
 
   let keysArray = Object.keys(recipes.recipes);
   let index = getRandomInt(Object.keys(keysArray).length); //[1,43,]
+
   let featured = keysArray[index];
 
   const recipe = recipes.recipes[featured];
