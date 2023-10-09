@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const UPDATE_FAVORITES = "session/UPDATE_FAVORITES";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,7 +12,43 @@ const removeUser = () => ({
   type: REMOVE_USER,
 });
 
+const updateFavorites = (favorites) => ({
+  type: UPDATE_FAVORITES,
+  favorites,
+});
+
 const initialState = { user: null };
+
+export const addFavoriteThunk = (userId, recipeId) => async (dispatch) => {
+  const response = await fetch(`/api/users/favorite/new`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userId, recipeId }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    // dispatch(updateFavorites(data.favorites));
+    dispatch(setUser(data));
+  }
+};
+
+export const deleteFavoriteThunk = (userId, recipeId) => async (dispatch) => {
+  const response = await fetch(`/api/users/favorite/delete`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userId, recipeId }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    // console.log(data.favorites);
+    // dispatch(updateFavorites(data.favorites));
+    dispatch(setUser(data));
+  }
+};
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch("/api/auth/", {
@@ -103,6 +140,11 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload };
     case REMOVE_USER:
       return { user: null };
+    case UPDATE_FAVORITES:
+      let newState = { ...state };
+      newState.user.favorites = action.favorites;
+      console.log(newState);
+      return newState;
     default:
       return state;
   }

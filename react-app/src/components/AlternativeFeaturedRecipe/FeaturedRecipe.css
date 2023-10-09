@@ -26,6 +26,7 @@
 }
 
 .page{
-  margin: 30px;
-  width: 1050px;
+  margin-left: 10%;
+  margin-right: 10%;
+  /* width: 1050px; */
 }

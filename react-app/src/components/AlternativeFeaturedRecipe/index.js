@@ -6,8 +6,8 @@ const AlternateFeaturedRecipe = () => {
   const history = useHistory();
 
   const recipes = useSelector((state) => state.recipes);
-  // const smallRecipes = recipes.recipes;
 
+  // const smallRecipes = recipes.recipes;
   // const ids = Object.keys(smallRecipes);
 
   function getRandomInt(max) {
@@ -15,8 +15,8 @@ const AlternateFeaturedRecipe = () => {
   }
 
   let keysArray = Object.keys(recipes.recipes);
-  // console.log(keysArray);
-  let index = getRandomInt(Object.keys(keysArray).length);
+  let index = getRandomInt(Object.keys(keysArray).length); //[1,43,]
+
   let featured = keysArray[index];
 
   const recipe = recipes.recipes[featured];

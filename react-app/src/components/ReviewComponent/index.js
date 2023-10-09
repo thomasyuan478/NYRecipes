@@ -46,6 +46,7 @@ export const ReviewComponent = ({ review }) => {
 
       dispatch(updateReviewThunk(updateReview));
       setUpdate(false);
+      review.comment = newComment;
     }
   };
 
