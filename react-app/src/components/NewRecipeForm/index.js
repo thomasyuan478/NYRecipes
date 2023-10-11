@@ -126,7 +126,6 @@ export const NewRecipeForm = () => {
                 onChange={(event, editor) => {
                   const data = editor.getData();
                   setDescription(data);
-                  console.log(data);
                 }}
                 data={description}
                 required
@@ -157,7 +156,7 @@ export const NewRecipeForm = () => {
                 onChange={(event, editor) => {
                   const data = editor.getData();
                   setInstruction(data);
-                  console.log(data);
+                  // console.log(data);
                 }}
                 data={instruction}
                 required
@@ -202,12 +201,13 @@ export const NewRecipeForm = () => {
                 onChange={(event, editor) => {
                   const data = editor.getData();
                   setIngredientList(data);
-                  console.log(data);
+                  // console.log(data);
                 }}
                 data={ingredientList}
                 required
                 id="ingredient_list"
               />
+              {/* <p>{ingredientList}</p> */}
               {/* <textarea
                 placeholder="Enter the recipes ingredients"
                 onChange={(e) => setIngredientList(e.target.value)}
