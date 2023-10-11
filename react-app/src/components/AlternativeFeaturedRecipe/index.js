@@ -1,6 +1,7 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
 import "./FeaturedRecipe.css";
+import parse from "html-react-parser";
 
 const AlternateFeaturedRecipe = () => {
   const history = useHistory();
@@ -48,7 +49,9 @@ const AlternateFeaturedRecipe = () => {
             <div className="fr-chefname">
               by {recipe?.owner_name.firstName} {recipe?.owner_name.lastName}{" "}
             </div>
-            <div className="fr-description">{recipe?.description}</div>
+            <div className="fr-description">
+              {recipe?.description && parse(recipe.description)}
+            </div>
           </div>
         </div>
       </div>
