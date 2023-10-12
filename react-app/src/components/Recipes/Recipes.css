@@ -1,6 +1,8 @@
 .recipes-list{
   display: flex;
   overflow-x: scroll;
+  max-width: 1015px;
+  min-width: 1015px;
 }
 
 .r-newrecipe {

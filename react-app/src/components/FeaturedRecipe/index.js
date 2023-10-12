@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
-import "./FeaturedRecipe.css";
+// import "./FeaturedRecipe.css";
 import parse from "html-react-parser";
 
 const FeaturedRecipe = ({ recipes }) => {

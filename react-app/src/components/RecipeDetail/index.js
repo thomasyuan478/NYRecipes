@@ -41,7 +41,7 @@ export const RecipeDetail = () => {
 
   useEffect(() => {
     dispatch(getSingleRecipeThunk(recipeId));
-    setUserId(user.id);
+    if (user) setUserId(user.id);
   }, [dispatch]);
 
   const normalizeFavorites = (sessionUser) => {
@@ -122,7 +122,7 @@ export const RecipeDetail = () => {
             </div>
             <div className="rd-section3">
               <h2>Ingredients</h2>
-              {recipe.ingredient_list && parse(recipe.ingredient_list)}
+              {recipe?.ingredient_list && parse(recipe.ingredient_list)}
             </div>
           </div>
 
