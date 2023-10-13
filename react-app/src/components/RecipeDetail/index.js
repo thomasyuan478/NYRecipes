@@ -10,7 +10,7 @@ import "./RecipeDetail.css";
 import ConfirmationModal from "../ConfirmationModal";
 import { addFavoriteThunk, deleteFavoriteThunk } from "../../store/session";
 import { useState } from "react";
-
+import parse from "html-react-parser";
 
 import OpenModalButton from "../OpenModalButton";
 
@@ -41,12 +41,12 @@ export const RecipeDetail = () => {
 
   useEffect(() => {
     dispatch(getSingleRecipeThunk(recipeId));
-    setUserId(user.id);
+    if (user) setUserId(user.id);
   }, [dispatch]);
 
   const normalizeFavorites = (sessionUser) => {
     let normalizedFavorites = [];
-    let favorites = sessionUser.favorites;
+    let favorites = sessionUser?.favorites;
     if (favorites) {
       favorites.forEach((obj) => normalizedFavorites.push(obj.id));
     }
@@ -122,7 +122,7 @@ export const RecipeDetail = () => {
             </div>
             <div className="rd-section3">
               <h2>Ingredients</h2>
-              {recipe.ingredient_list}
+              {recipe?.ingredient_list && parse(recipe.ingredient_list)}
             </div>
           </div>
 
@@ -131,11 +131,13 @@ export const RecipeDetail = () => {
               <img className="rd-image" src={recipe.cover_image}></img>
             </div>
             <div className="rd-section2">
-              <p className="rd-description">{recipe.description}</p>
+              <p className="rd-description">
+                {recipe.description && parse(recipe.description)}
+              </p>
             </div>
             <div className="rd-section3">
               <h2>Preparation</h2>
-              {recipe.instruction}
+              {recipe.instruction && parse(recipe.instruction)}
             </div>
           </div>
         </div>

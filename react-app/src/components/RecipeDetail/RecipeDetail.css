@@ -1,9 +1,11 @@
 .rd-sectioncontainer{
   display: flex;
+  width: 500px;
 }
 .rd-leftsection{
   display: flex;
   flex-direction: column;
+  width: 500px;
   /* justify-content: center; */
 }
 
@@ -24,7 +26,8 @@
 }
 
 .rd-section2{
-  height: 200px
+min-height: 200px;
+
 }
 
 .rd-title{

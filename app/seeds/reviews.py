@@ -58,6 +58,48 @@ def add_reviews():
     star_rating=5,
     comment="SUPER DELICIOUS, CAN'T WAIT TO TRY MORE"
   )
+  fourOne = Review(
+    user_id=2,
+    recipe_id=4,
+    star_rating=4,
+    comment="Absolutely outstanding!"
+  )
+  fiveOne = Review(
+    user_id=2,
+    recipe_id=5,
+    star_rating=4,
+    comment="Absolutely marvelous!"
+  )
+  sixOne = Review(
+    user_id=2,
+    recipe_id=6,
+    star_rating=3,
+    comment="Could have been better! I'll try again next week"
+  )
+  sevenOne = Review(
+    user_id=2,
+    recipe_id=7,
+    star_rating=4,
+    comment="One of my favorites"
+  )
+  eightOne = Review(
+    user_id=2,
+    recipe_id=8,
+    star_rating=5,
+    comment="Delicious!!"
+  )
+  nineOne = Review(
+    user_id=2,
+    recipe_id=9,
+    star_rating=5,
+    comment="This is my absolute favorite recipe"
+  )
+  tenOne = Review(
+    user_id=2,
+    recipe_id=10,
+    star_rating=1,
+    comment="This one is really bad! I am not a fan of this dish at all"
+  )
   db.session.add(oneOne)
   db.session.add(oneTwo)
   db.session.add(oneThree)
@@ -67,6 +109,13 @@ def add_reviews():
   db.session.add(threeOne)
   db.session.add(threeTwo)
   db.session.add(threeThree)
+  db.session.add(fourOne)
+  db.session.add(fiveOne)
+  db.session.add(sixOne)
+  db.session.add(sevenOne)
+  db.session.add(eightOne)
+  db.session.add(nineOne)
+  db.session.add(tenOne)
   db.session.commit()
 
 

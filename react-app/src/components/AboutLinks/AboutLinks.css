@@ -1,0 +1,31 @@
+.footer {
+  background: rgb(0, 0, 0);
+  color: white;
+  height: 150px;
+}
+
+.footer-content-container{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.fa-c{
+  font-size: 1.8em;
+  margin: 0px 10px;
+}
+
+.footer-icons{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-icons > a{
+  color: white;
+}

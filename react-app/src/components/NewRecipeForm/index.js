@@ -4,6 +4,9 @@ import { postRecipeThunk } from "../../store/recipe";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./NewRecipeForm.css";
 import { createImage } from "../../store/recipe";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import parse from "html-react-parser";
 
 export const NewRecipeForm = () => {
   const history = useHistory();
@@ -118,7 +121,17 @@ export const NewRecipeForm = () => {
           <div>
             <label>Description</label>
             <div>
-              <textarea
+              <CKEditor
+                editor={ClassicEditor}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setDescription(data);
+                }}
+                data={description}
+                required
+                id="ingredient_list"
+              />
+              {/* <textarea
                 placeholder="Enter the recipes description"
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
@@ -126,7 +139,7 @@ export const NewRecipeForm = () => {
                 rows={"5"}
                 required
                 id="description"
-              ></textarea>
+              ></textarea> */}
               {validationErrors.description && (
                 <p className="error">
                   {validationErrors.description} Characters:
@@ -138,7 +151,18 @@ export const NewRecipeForm = () => {
           <div>
             <label>Instructions</label>
             <div>
-              <textarea
+              <CKEditor
+                editor={ClassicEditor}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setInstruction(data);
+                  // console.log(data);
+                }}
+                data={instruction}
+                required
+                id="ingredient_list"
+              />
+              {/* <textarea
                 placeholder="Enter the recipes instructions"
                 onChange={(e) => setInstruction(e.target.value)}
                 value={instruction}
@@ -146,7 +170,7 @@ export const NewRecipeForm = () => {
                 rows={"10"}
                 required
                 id="instruction"
-              ></textarea>
+              ></textarea> */}
               {validationErrors.instruction && (
                 <p className="error">
                   {validationErrors.instruction} Characters:
@@ -172,7 +196,19 @@ export const NewRecipeForm = () => {
           <div>
             <label>Ingredient List</label>
             <div>
-              <textarea
+              <CKEditor
+                editor={ClassicEditor}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setIngredientList(data);
+                  // console.log(data);
+                }}
+                data={ingredientList}
+                required
+                id="ingredient_list"
+              />
+              {/* <p>{ingredientList}</p> */}
+              {/* <textarea
                 placeholder="Enter the recipes ingredients"
                 onChange={(e) => setIngredientList(e.target.value)}
                 value={ingredientList}
@@ -180,7 +216,7 @@ export const NewRecipeForm = () => {
                 rows={"10"}
                 required
                 id="ingredient_list"
-              ></textarea>
+              ></textarea> */}
               {validationErrors.ingredientList && (
                 <p className="error">
                   {validationErrors.ingredientList} Characters:
