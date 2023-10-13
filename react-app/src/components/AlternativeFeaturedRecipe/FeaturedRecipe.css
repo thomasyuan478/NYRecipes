@@ -7,7 +7,7 @@
 }
 
 .fr-image{
-  max-height: 500px;
+  min-width: 500px;
 }
 
 .fr-content{
@@ -16,7 +16,7 @@
   justify-content: space-evenly;
   margin-left: 30px;
   width: 390px;
-  min-width: 390px;
+  min-width: 200px;
 }
 
 .fr-recipename{
