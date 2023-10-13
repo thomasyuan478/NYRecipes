@@ -1,8 +1,8 @@
 .recipes-list{
   display: flex;
   overflow-x: scroll;
-  max-width: 1015px;
-  min-width: 1015px;
+  /* max-width: 1015px; */
+  min-width: 802px;
   margin-bottom: 45px;
 }
 
