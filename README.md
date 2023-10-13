@@ -14,6 +14,8 @@ site link: https://recipeshare-mvke.onrender.com/
 
 RecipeShare is a full stack clone of NewYorkTimesCooking. Users are able to login, create recipes, write reviews, and add recipes to their favorites.
 
+![recipeshare2](https://github.com/thomasyuan478/RecipeShare/assets/130687121/ebfc821d-0876-47e7-bcbd-20857d2cb23c)
+
 ### <a name="features"></a> Features
 
 ### <a name="technologies"></a> Technologies
