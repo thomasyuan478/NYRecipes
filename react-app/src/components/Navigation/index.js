@@ -17,6 +17,11 @@ function Navigation({ isLoaded }) {
       </NavLink>
       <div className="nav-buttons">
         {sessionUser && (
+          <NavLink className="nav-link" exact to="/details">
+            My Recipes
+          </NavLink>
+        )}
+        {sessionUser && (
           <NavLink className="nav-link" exact to="/new">
             Create a New Recipe
           </NavLink>

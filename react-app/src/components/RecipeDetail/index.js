@@ -46,7 +46,7 @@ export const RecipeDetail = () => {
 
   const normalizeFavorites = (sessionUser) => {
     let normalizedFavorites = [];
-    let favorites = sessionUser.favorites;
+    let favorites = sessionUser?.favorites;
     if (favorites) {
       favorites.forEach((obj) => normalizedFavorites.push(obj.id));
     }
