@@ -76,7 +76,9 @@ export const ReviewContainer = ({ reviews, recipeId }) => {
               {errorValidation.Review && (
                 <p className="error">{errorValidation.Review}</p>
               )}
-              {!user && <p>You must be signed in to write a review</p>}
+              {!user && (
+                <p className="error">You must be signed in to write a review</p>
+              )}
             </form>
           </div>
           <div className="rc-reviews">

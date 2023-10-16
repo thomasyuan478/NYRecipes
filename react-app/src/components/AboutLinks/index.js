@@ -18,13 +18,16 @@ export const AboutLinks = () => {
             <div className="footer-content">
               <h2>Contact</h2>
               <div className="footer-icons">
-                <a href="https://github.com/thomasyuan478">
+                <a href="https://github.com/thomasyuan478" target="blank">
                   <i class="fab fa-github-square fa-c"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/thomas-yuan-3b1581293/">
+                <a
+                  href="https://www.linkedin.com/in/thomas-yuan-3b1581293/"
+                  target="blank"
+                >
                   <i class="fab fa-linkedin fa-c"></i>
                 </a>
-                <a href="mailto:thomasyuan478@gmail.com">
+                <a href="mailto:thomasyuan478@gmail.com" target="blank">
                   <i class="fas fa-envelope-square fa-c"></i>
                 </a>
               </div>

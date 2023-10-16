@@ -143,7 +143,6 @@ export default function reducer(state = initialState, action) {
     case UPDATE_FAVORITES:
       let newState = { ...state };
       newState.user.favorites = action.favorites;
-      console.log(newState);
       return newState;
     default:
       return state;

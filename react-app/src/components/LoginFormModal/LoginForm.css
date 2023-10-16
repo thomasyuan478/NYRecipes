@@ -33,6 +33,10 @@
   width: 120px;
 }
 
+.lf-button:hover{
+  cursor: pointer;
+}
+
 .lf-login{
   background-color: orange;
 }
