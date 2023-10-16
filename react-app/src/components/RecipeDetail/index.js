@@ -30,12 +30,12 @@ export const RecipeDetail = () => {
   const recipe = useSelector((state) => state.recipes.singleRecipe);
 
   const DeleteRecipe = (e) => {
-    console.log("delete button");
+    // console.log("delete button");
     dispatch(deleteRecipeThunk(recipe.id));
   };
 
   const UpdateRecipe = (e) => {
-    console.log("edit button");
+    // console.log("edit button");
     history.push(`/recipes/${recipe.id}/edit`);
   };
 

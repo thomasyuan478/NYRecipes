@@ -16,7 +16,7 @@ export const ReviewComponent = ({ review }) => {
   const user = useSelector((state) => state.session.user);
 
   const deleteButton = (e) => {
-    console.log(review.id);
+    // console.log(review.id);
     dispatch(deleteReviewThunk(review.id));
   };
 

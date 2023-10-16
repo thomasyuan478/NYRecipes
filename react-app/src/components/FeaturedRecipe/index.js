@@ -19,8 +19,8 @@ const FeaturedRecipe = ({ recipes }) => {
 
   const recipe = recipes[index];
 
-  console.log("Index", index);
-  console.log("Recipe", recipe);
+  // console.log("Index", index);
+  // console.log("Recipe", recipe);
 
   const redirect = () => {
     history.push(`/recipes/${recipe.id}`);
