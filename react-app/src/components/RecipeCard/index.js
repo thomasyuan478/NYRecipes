@@ -56,7 +56,9 @@ export const RecipeCard = ({ recipe }) => {
     return (finalRating / returnArray.length).toFixed(2);
   };
 
-  // starRating(reviewsArray);
+  const reviewNumber = (reviewsArray) => {
+    return reviewsArray.length;
+  };
 
   return (
     <>
@@ -84,6 +86,7 @@ export const RecipeCard = ({ recipe }) => {
               )} */}
             </div>
           </div>
+          <div>Reviews {reviewNumber(recipe.rating)}</div>
         </div>
       </div>
     </>
