@@ -27,7 +27,7 @@ export const AboutLinks = () => {
                 >
                   <i class="fab fa-linkedin fa-c"></i>
                 </a>
-                <a href="mailto:thomasyuan478@gmail.com" target="blank">
+                <a href="mailto:tyuan4164@gmail.com" target="blank">
                   <i class="fas fa-envelope-square fa-c"></i>
                 </a>
               </div>
