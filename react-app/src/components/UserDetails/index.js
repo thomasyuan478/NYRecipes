@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { getRecipesThunk } from "../../store/recipe";
 import { useSelector } from "react-redux";
 import { RecipeCard } from "../RecipeCard";
+import "./UserDetails.css";
 
 export const UserDetails = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export const UserDetails = () => {
     <>
       <div className="page">
         <h1>My Recipes</h1>
-        <div>
+        <div className="ud-container">
           {ownedrecipes.map((key) => (
             <RecipeCard recipe={smallRecipes[key]} />
           ))}
