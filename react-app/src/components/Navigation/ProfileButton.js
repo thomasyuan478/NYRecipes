@@ -38,6 +38,8 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const ulClassNameFalse =
+    "profile-dropdown-false" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
   return (
@@ -45,34 +47,32 @@ function ProfileButton({ user }) {
       <button onClick={openMenu}>
         <i className="fas fa-user-circle fa-2x" />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
-        {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={(e) => history.push("/new")}>New Recipe</button>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
-        ) : (
-          <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
+      {user ? (
+        <ul className={ulClassName} ref={ulRef}>
+          <li>{user.username}</li>
+          <li>{user.email}</li>
+          <li>
+            <button onClick={(e) => history.push("/new")}>New Recipe</button>
+          </li>
+          <li>
+            <button onClick={handleLogout}>Log Out</button>
+          </li>
+        </ul>
+      ) : (
+        <ul className={ulClassNameFalse} ref={ulRef}>
+          <OpenModalButton
+            buttonText="Log In"
+            onItemClick={closeMenu}
+            modalComponent={<LoginFormModal />}
+          />
 
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </>
-        )}
-      </ul>
+          <OpenModalButton
+            buttonText="Sign Up"
+            onItemClick={closeMenu}
+            modalComponent={<SignupFormModal />}
+          />
+        </ul>
+      )}
     </>
   );
 }
