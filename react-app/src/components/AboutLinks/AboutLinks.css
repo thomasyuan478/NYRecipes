@@ -1,6 +1,6 @@
 .footer {
-  background: rgb(0, 0, 0);
-  color: white;
+  background-color: rgb(252, 178, 42);
+  color: black;
   height: 150px;
 }
 
@@ -27,5 +27,5 @@
 }
 
 .footer-icons > a{
-  color: white;
+  color: black;
 }
