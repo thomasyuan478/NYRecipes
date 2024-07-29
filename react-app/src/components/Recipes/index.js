@@ -4,7 +4,6 @@ import { getRecipesThunk } from "../../store/recipe";
 import { RecipeCard } from "../RecipeCard";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./Recipes.css";
-import FeaturedRecipe from "../FeaturedRecipe";
 import AlternateFeaturedRecipe from "../AlternativeFeaturedRecipe";
 
 export const Recipes = () => {
@@ -36,7 +35,6 @@ export const Recipes = () => {
   return (
     <>
       <div className="page">
-        {/* <FeaturedRecipe recipes={smallRecipes} /> */}
         <AlternateFeaturedRecipe recipe={featured} />
         <h1>Latest Recipes</h1>
         {sessionUser && (
